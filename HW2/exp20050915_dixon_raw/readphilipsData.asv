@@ -1,0 +1,21 @@
+%function dd = readPhilipsData(filename) 
+%
+%  This will read in a complex reconstructed dataset saved by the scanner.
+%
+filename='cpx_101.data';
+
+%
+%  Read in the data file.
+%
+d = readraw(filename_data, 'float', [256*2 256], 'l');
+dd = zeros(256,256);
+
+
+dd(:,:) = d(1:2:end,:) + i* d(2:2:end,:);
+
+
+
+figure(1);imshow(abs(dd),[]);
+figure();imshow(angle(dd),[]);
+
+
